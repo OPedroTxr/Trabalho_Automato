@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.trabalho1;
 
+import com.mycompany.trabalho1.Classes.AutomatoVerify;
 import com.mycompany.trabalho1.Classes.FilePersistence;
 import com.mycompany.trabalho1.Classes.Serializador;
 import com.mycompany.trabalho1.Classes.Transicao;
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  *
@@ -15,28 +13,21 @@ import java.io.FileNotFoundException;
  */
 public class Trabalho1 {
 
-      public static void main(String[] args) throws FileNotFoundException {
-        
-          
+    public static void main(String[] args) throws FileNotFoundException {
+
         FilePersistence file = new FilePersistence();
-
-        // Lê o conteúdo do arquivo
-        String conteudo = file.LoadFromFile("C:\\Users\\Gabeews\\Desktop\\Trabalho Java zé rui\\Teste.txt");
-
-        // Exibe o conteúdo no terminal
-        System.out.println(conteudo);
-        
-        
-        //Onde são os finais dos automatos
-        Integer [] finais;
         Serializador s = new Serializador();
-        finais = s.fromCSVFinaly(conteudo);
-        
-        Transicao [] body = s.fromCSVBody(conteudo);
-        
-        
-          
-          
-          
+        // Lê o conteúdo do arquivo
+        String conteudo = file.LoadFromFile("C:\\Users\\PedroTxr\\Documents\\Trabalho - Automatos\\Trabalho_Automato\\trabalho1\\src\\main\\sources\\Teste.txt");
+
+        Integer[] finais = s.fromCSVFinaly(conteudo);
+        Transicao[] body = s.fromCSVBody(conteudo);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Qual sequência deseja testar?");
+        String entrada = scanner.nextLine();
+
+        AutomatoVerify executor = new AutomatoVerify(body, finais);
+        executor.executar(entrada);
     }
 }

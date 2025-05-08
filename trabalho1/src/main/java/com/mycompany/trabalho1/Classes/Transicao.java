@@ -30,7 +30,7 @@ public class Transicao {
     public String toString() {
         return "Transicao{" + "origem=" + origem + ", letra=" + letra + ", destino=" + destino + '}';
     }
-
+    
     public int getOrigem() {
         return origem;
     }
