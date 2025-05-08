@@ -45,7 +45,7 @@ public class AutomatoVerify {
     }
 
     private void verificarEstadoFinal() {
-        System.out.println("Chegou na última letra!");
+        System.out.println("Chegou na ultima letra!");
         boolean aceito = Arrays.stream(finais).anyMatch(f -> f == estadoAtual); //Arrays.stream(finais).anyMatch(f -> f == estadoAtual); (Equivalente ao for) 
 
         if (aceito) {

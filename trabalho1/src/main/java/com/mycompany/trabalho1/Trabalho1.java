@@ -24,7 +24,7 @@ public class Trabalho1 {
         Transicao[] body = s.fromCSVBody(conteudo);
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Qual sequência deseja testar?");
+        System.out.println("Qual sequencia deseja testar?");
         String entrada = scanner.nextLine();
 
         AutomatoVerify executor = new AutomatoVerify(body, finais);
