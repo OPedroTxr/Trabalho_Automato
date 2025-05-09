@@ -1,6 +1,6 @@
 package com.mycompany.trabalho1.Classes;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  *
@@ -8,11 +8,11 @@ import java.util.Arrays;
  */
 public class AutomatoVerify {
 
-    private Transicao[] transicoes;
-    private Integer[] finais;
+    private ArrayList<Transicao> transicoes;
+    private ArrayList<Integer> finais;
     private int estadoAtual;
 
-    public AutomatoVerify(Transicao[] transicoes, Integer[] finais) {
+    public AutomatoVerify(ArrayList<Transicao> transicoes, ArrayList<Integer> finais) {
         this.transicoes = transicoes;
         this.finais = finais;
         this.estadoAtual = 0;
@@ -24,7 +24,7 @@ public class AutomatoVerify {
         for (int i = 0; i < letras.length; i++) {
             char letra = letras[i];
             if (!processarLetra(letra)) {
-                System.out.printf("Nao ha transiçao para " + letra + "  a partir do estado" + estadoAtual);
+                System.out.printf("Nao ha transicao para " + letra + " a partir do estado " + estadoAtual + ".");
                 return;
             }
 
@@ -45,13 +45,13 @@ public class AutomatoVerify {
     }
 
     private void verificarEstadoFinal() {
-        System.out.println("Chegou na ultima letra!");
-        boolean aceito = Arrays.stream(finais).anyMatch(f -> f == estadoAtual); //Arrays.stream(finais).anyMatch(f -> f == estadoAtual); (Equivalente ao for) 
-
+        
+        boolean aceito = finais.contains(estadoAtual);
+        
         if (aceito) {
-            System.out.println("A sequencia e compativel com esse automato.");
+            System.out.println("A palavra foi aceita pela linguagem!");
         } else {
-            System.out.println("A sequencia **nao** e compativel com esse automato.");
+            System.out.println("A palavra **NAO** foi aceita pela linguagem.");
         }
     }
 }
